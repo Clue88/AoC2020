@@ -1,16 +1,12 @@
 def main():
-    nums = []
-    while True:
-        num = input()
-        if num:
-            nums.append(int(num))
-        else:
-            break
+    f = open('1-input.txt', 'r')
+    nums = f.read().split('\n')[:-1]
+    f.close()
 
     for num_a in nums:
         for num_b in nums:
-            if num_a + num_b == 2020:
-                print('Result: ' + str(num_a) + ' * ' + str(num_b) + ' = ' + str(num_a * num_b))
+            if int(num_a) + int(num_b) == 2020:
+                print('Result: ' + num_a + ' * ' + num_b + ' = ' + str(int(num_a) * int(num_b)))
                 return
 
 if __name__ == '__main__':
