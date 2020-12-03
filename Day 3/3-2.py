@@ -4,28 +4,19 @@ def main():
     f.close()
 
     total = 1
-    slopes = [1, 3, 5, 7]
+    slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 
-    for slope in slopes:
+    for x, y in slopes:
         ind = 0
         trees = 0
-        for line in lines:
+        for num, line in enumerate(lines):
+            if num % y != 0:
+                continue
             if line[ind] == '#':
                 trees += 1
-            ind += slope
+            ind += x
             ind = ind % 31
         total *= trees
-
-    ind = 0
-    trees = 0
-    for num, line in enumerate(lines):
-        if num % 2 != 0:
-            continue
-        if line[ind] == '#':
-            trees += 1
-        ind += 1
-        ind = ind % 31
-    total *= trees
 
     print('Result:', total)
 
