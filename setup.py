@@ -38,7 +38,7 @@ def main():
     f.close()
     files += 1
 
-    print('Wrote ' + str(files) + 'files to directory Day ' + day)
+    print('Wrote ' + str(files) + ' files to directory Day ' + day)
 
 if __name__ == '__main__':
     main()
