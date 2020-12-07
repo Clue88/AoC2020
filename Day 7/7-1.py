@@ -28,7 +28,8 @@ def main():
             total += 1
             curr.append(rule.split(' bags')[0])
 
-    for i in range(0, 10):
+    new = ['']
+    while len(new) > 0:
         new = []
         for rule in rules:
             if rule.split(' bags')[0] in curr:
