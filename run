@@ -1,0 +1,11 @@
+echo --------------------------
+echo "Running days 1-$1"
+echo --------------------------
+for (( c=1; c<=$1; c++ ))
+do
+    echo "Day $c"
+    cd "Day $c"
+    sh $c.sh
+    echo --------------------------
+    cd ..
+done
