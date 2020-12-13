@@ -4,28 +4,35 @@ def main():
     f.close()
 
     buses = []
+    product = 1
     for index, element in enumerate(lines[1].split(',')):
         if element != 'x':
-            buses.append((index, int(element)))
-    print(buses)
+            buses.append((-1 * index, int(element)))
+            product *= int(element)
+    
+    total = 0
+    for rem, mod in buses:
+        if mod == 0:
+            continue
+        value = (rem * (product // mod) * (invert_modulo((product // mod), mod)))
+        total += value
 
-    timestamp = 100000000000388
-    while True:
-        print(timestamp)
-        passed = True
-        for index, bus in buses:
-            if (timestamp + index) % bus != 0:
-                passed = False
-                break
-        if passed:
-            print('Result:', timestamp)
-            break
-        timestamp += 643
+    print('Result:', total % product)
+
+def extended_euclid(a, b):
+    if b == 0:
+        return (1, 0)
+    (x, y) = extended_euclid(b, a % b)
+    k = a // b
+    return (y, x - k * y)
+
+def invert_modulo(a, n):
+    (b, x) = extended_euclid(a, n)
+    if b < 0:
+        b = (b % n + n) % n
+    return b
 
 if __name__ == '__main__':
     main()
-
-# Took too long - used WolframAlpha instead. Theoretically could implement
-# a Chinese Remainder Theorem algorithm but I'm tired and lazy.
 
 # Result: 760171380521445
