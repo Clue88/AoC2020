@@ -166,4 +166,4 @@ def neighbors(w, z, y, x, grid):
 if __name__ == '__main__':
     main()
 
-# Result: 
+# Result: 2332
